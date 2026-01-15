@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FWI Prediction</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+      }
+
+      .container {
+        width: 400px;
+        margin: 60px auto;
+        padding: 25px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ff5722;
+        color: white;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #e64a19;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>FWI Prediction</h1>
+
+      <form action="{{ url_for('predict_data')}}" method="post">
+        <input
+          type="number"
+          step="any"
+          name="f1"
+          placeholder="Temperature"
+          required
+        />
+        <input
+          type="number"
+          step="any"
+          name="f2"
+          placeholder="Relative Humidity"
+          required
+        />
+        <input
+          type="number"
+          step="any"
+          name="f3"
+          placeholder="Wind Speed"
+          required
+        />
+        <input type="number" step="any" name="f4" placeholder="Rain" required />
+        <input type="number" step="any" name="f5" placeholder="FFMC" required />
+        <input type="number" step="any" name="f6" placeholder="DMC" required />
+        <input type="number" step="any" name="f7" placeholder="ISI" required />
+        <input
+          type="number"
+          step="any"
+          name="f8"
+          placeholder="Classes"
+          required
+        />
+        <input
+          type="number"
+          step="any"
+          name="f9"
+          placeholder="Region"
+          required
+        />
+
+        <button type="submit">Predict</button>
+      </form>
+
+      {% if results %}
+      <h3 style="text-align: center">FWI: {{ results }}</h3>
+      {% endif %}
+    </div>
+  </body>
+</html>
