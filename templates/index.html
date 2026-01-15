@@ -1,1 +1,173 @@
-<h1>Welcome to my first ML app</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fire Weather Index Prediction</title>
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        min-height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)),
+          url("https://images.unsplash.com/photo-1519681393784-d120267933ba");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.97);
+        width: 680px;
+        padding: 45px;
+        border-radius: 10px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        animation: fadeUp 1.2s ease;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        font-size: 30px;
+        color: #1f2933;
+        margin-bottom: 8px;
+      }
+
+      h1 span {
+        color: #b71c1c;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 25px;
+      }
+
+      p {
+        font-size: 15px;
+        color: #444;
+        line-height: 1.8;
+        margin-bottom: 18px;
+      }
+
+      .dataset {
+        background: #f7f7f7;
+        padding: 16px;
+        border-left: 4px solid #b71c1c;
+        margin: 25px 0;
+      }
+
+      .dataset strong {
+        color: #b71c1c;
+      }
+
+      /* subtle moving fire icon */
+      .fire {
+        text-align: center;
+        font-size: 42px;
+        margin: 25px 0;
+        animation: flame 1.8s infinite ease-in-out;
+      }
+
+      @keyframes flame {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.85;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 32px;
+        background-color: #b71c1c;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 14px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #8e0000;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .footer {
+        margin-top: 22px;
+        text-align: center;
+        font-size: 12px;
+        color: #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="card">
+      <h1>Fire Weather Index <span>Prediction System</span></h1>
+      <div class="subtitle">Machine Learning Web Application</div>
+
+      <p>
+        This project is a machine learning–based web application designed to
+        predict the <strong>Fire Weather Index (FWI)</strong>, a key indicator
+        used to assess the risk of forest fires under varying environmental
+        conditions.
+      </p>
+
+      <div class="dataset">
+        <p>
+          <strong>Dataset Used:</strong> Algerian Forest Fire Dataset
+          <br />
+          The dataset contains real meteorological observations from different
+          regions of Algeria and is widely used for fire risk analysis.
+        </p>
+      </div>
+
+      <div class="fire">🔥</div>
+
+      <p>
+        The model evaluates parameters such as temperature, humidity, wind
+        speed, rainfall, and fire indices to generate accurate predictions. This
+        application demonstrates end-to-end deployment of a machine learning
+        model using Flask.
+      </p>
+
+      <a href="/predictdata" class="btn"> Go to Prediction Page </a>
+
+      <div class="footer">
+        Built with Flask • Scikit-learn • Machine Learning
+      </div>
+    </div>
+  </body>
+</html>

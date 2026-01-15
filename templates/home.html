@@ -3,53 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <title>FWI Prediction</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f6f8;
+        min-height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)),
+          url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .container {
-        width: 400px;
-        margin: 60px auto;
-        padding: 25px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 430px;
+        padding: 38px;
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 12px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(6px);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      /* Hover effect on card */
+      .container:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55);
       }
 
       h1 {
         text-align: center;
-        margin-bottom: 25px;
+        margin-bottom: 8px;
+        font-size: 26px;
+        font-weight: 600;
+        color: #1f2933;
+      }
+
+      .subtitle {
+        text-align: center;
+        font-size: 13px;
+        color: #555;
+        margin-bottom: 26px;
       }
 
       input {
         width: 100%;
-        padding: 8px;
+        padding: 11px;
         margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      /* Fire-tone focus */
+      input:focus {
+        outline: none;
+        border-color: #c62828;
+        box-shadow: 0 0 8px rgba(198, 40, 40, 0.4);
       }
 
       button {
         width: 100%;
-        padding: 10px;
-        background-color: #ff5722;
+        padding: 13px;
+        margin-top: 18px;
+        background: linear-gradient(135deg, #c62828, #8e0000);
         color: white;
         border: none;
-        font-size: 16px;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 6px;
         cursor: pointer;
+        transition: all 0.35s ease;
       }
 
       button:hover {
-        background-color: #e64a19;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      .result {
+        margin-top: 22px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        color: #2e7d32;
+        animation: fadeIn 0.8s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 12px;
+        color: #777;
       }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <h1>FWI Prediction</h1>
+      <h1>Fire Weather Index Prediction</h1>
+      <div class="subtitle">
+        Machine Learning based Forest Fire Risk Assessment
+      </div>
 
-      <form action="{{ url_for('predict_data')}}" method="post">
+      <form action="{{ url_for('predict_data') }}" method="post">
         <input
           type="number"
           step="any"
@@ -90,12 +173,16 @@
           required
         />
 
-        <button type="submit">Predict</button>
+        <button type="submit">Predict FWI</button>
       </form>
 
       {% if results %}
-      <h3 style="text-align: center">FWI: {{ results }}</h3>
+      <div class="result">🔥 Predicted FWI: {{ results }}</div>
       {% endif %}
+
+      <div class="footer">
+        Algerian Forest Fire Dataset • Flask • Machine Learning
+      </div>
     </div>
   </body>
 </html>
